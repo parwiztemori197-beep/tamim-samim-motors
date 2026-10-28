@@ -107,15 +107,26 @@
         .bottom-bar a:hover { color: #d4af37; }
         .bottom-bar .icon-box { font-size: 20px; margin-bottom: 2px; }
 
+        /* پاپ‌آپ خوش‌آمدگویی */
         .welcome-popup { 
             position: fixed; top: 15px; left: 50%; transform: translateX(-50%) translateY(-100px); 
             background: linear-gradient(135deg, #d4af37, #b8860b); color: #111; 
             padding: 12px 20px; border-radius: 20px; font-weight: 700; font-size: 13px; 
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); z-index: 2000; 
             opacity: 0; transition: all 0.5s ease; display: flex; align-items: center; gap: 10px; 
+            width: 85%; max-width: 350px; justify-content: space-between;
         }
         .welcome-popup.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-        .welcome-popup .close-btn { cursor: pointer; font-size: 16px; font-weight: 900; }
+        .welcome-popup span { cursor: pointer; font-size: 16px; font-weight: 900; }
+        
+        /* دکمه صوتی جدید */
+        .voice-btn { 
+            background: #111; color: #d4af37; border: none; padding: 8px 12px; 
+            border-radius: 10px; font-size: 12px; cursor: pointer; 
+            display: flex; align-items: center; gap: 5px; font-weight: 700; 
+            transition: all 0.3s; font-family: 'Vazirmatn', Tahoma, sans-serif;
+        }
+        .voice-btn:hover { background: #222; }
 
         .chat-btn { position: fixed; bottom: 75px; right: 15px; background: #007bff; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5); z-index: 1000; cursor: pointer; transition: transform 0.3s; }
         .chat-btn:hover { transform: scale(1.1); }
@@ -136,10 +147,17 @@
 </head>
 <body>
 
+<!-- پاپ‌آپ با دکمه پخش صدا -->
 <div class="welcome-popup" id="welcomePopup">
-    <span>به نمایشگاه تمیم صمیم خوش آمدید! 🚗✨</span>
-    <span class="close-btn" onclick="document.getElementById('welcomePopup').classList.remove('show')">✕</span>
+    <div style="display:flex; flex-direction:column; gap:5px;">
+        <span>به نمایشگاه تمیم صمیم خوش آمدید! 🚗✨</span>
+        <button class="voice-btn" onclick="playWelcomeVoice()">🔊 پخش پیام صوتی</button>
+    </div>
+    <span onclick="document.getElementById('welcomePopup').classList.remove('show')">✕</span>
 </div>
+
+<!-- المان صوتی مخفی -->
+<audio id="welcomeAudio" src="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=fa&q=به%20نمایشگاه%20موتر%20فروشی%20تمیم%20صمیم%20خوش%20آمدید.%20برای%20دیدن%20ماشین‌های%20لوکس%20و%20باکیفیت،%20همین%20حالا%20با%20ما%20در%20تماس%20باشید." preload="auto"></audio>
 
 <div class="container">
     <div class="live-clock" id="liveClock">🕒 در حال بارگذاری ساعت...</div>
@@ -273,10 +291,18 @@
 </div>
 
 <script>
+    // پخش صدای خوش‌آمدگویی با فایل MP3
+    function playWelcomeVoice() {
+        const audio = document.getElementById('welcomeAudio');
+        audio.play().catch(function(error) {
+            console.log("خطا در پخش صدا: ", error);
+        });
+    }
+
     // پاپ‌آپ خوش‌آمدگویی
     setTimeout(function() { 
         document.getElementById('welcomePopup').classList.add('show'); 
-        setTimeout(function() { document.getElementById('welcomePopup').classList.remove('show'); }, 8000); 
+        setTimeout(function() { document.getElementById('welcomePopup').classList.remove('show'); }, 10000); 
     }, 1500);
 
     // انیمیشن
