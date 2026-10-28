@@ -107,7 +107,6 @@
         .bottom-bar a:hover { color: #d4af37; }
         .bottom-bar .icon-box { font-size: 20px; margin-bottom: 2px; }
 
-        /* پاپ‌آپ خوش‌آمدگویی */
         .welcome-popup { 
             position: fixed; top: 15px; left: 50%; transform: translateX(-50%) translateY(-100px); 
             background: linear-gradient(135deg, #d4af37, #b8860b); color: #111; 
@@ -119,7 +118,6 @@
         .welcome-popup.show { transform: translateX(-50%) translateY(0); opacity: 1; }
         .welcome-popup span { cursor: pointer; font-size: 16px; font-weight: 900; }
         
-        /* دکمه صوتی جدید */
         .voice-btn { 
             background: #111; color: #d4af37; border: none; padding: 8px 12px; 
             border-radius: 10px; font-size: 12px; cursor: pointer; 
@@ -147,7 +145,6 @@
 </head>
 <body>
 
-<!-- پاپ‌آپ با دکمه پخش صدا -->
 <div class="welcome-popup" id="welcomePopup">
     <div style="display:flex; flex-direction:column; gap:5px;">
         <span>به نمایشگاه تمیم صمیم خوش آمدید! 🚗✨</span>
@@ -155,9 +152,6 @@
     </div>
     <span onclick="document.getElementById('welcomePopup').classList.remove('show')">✕</span>
 </div>
-
-<!-- المان صوتی مخفی -->
-<audio id="welcomeAudio" src="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=fa&q=به%20نمایشگاه%20موتر%20فروشی%20تمیم%20صمیم%20خوش%20آمدید.%20برای%20دیدن%20ماشین‌های%20لوکس%20و%20باکیفیت،%20همین%20حالا%20با%20ما%20در%20تماس%20باشید." preload="auto"></audio>
 
 <div class="container">
     <div class="live-clock" id="liveClock">🕒 در حال بارگذاری ساعت...</div>
@@ -291,12 +285,19 @@
 </div>
 
 <script>
-    // پخش صدای خوش‌آمدگویی با فایل MP3
+    // تابع پخش صدا
     function playWelcomeVoice() {
-        const audio = document.getElementById('welcomeAudio');
-        audio.play().catch(function(error) {
-            console.log("خطا در پخش صدا: ", error);
-        });
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            var msg = new SpeechSynthesisUtterance();
+            msg.text = "به نمایشگاه موتر فروشی تمیم صمیم خوش آمدید. برای دیدن ماشین‌های لوکس و باکیفیت، همین حالا با ما در تماس باشید.";
+            msg.lang = 'fa-IR';
+            msg.rate = 0.9;
+            msg.pitch = 1;
+            window.speechSynthesis.speak(msg);
+        } else {
+            alert('مرورگر شما از این قابلیت پشتیبانی نمی‌کند.');
+        }
     }
 
     // پاپ‌آپ خوش‌آمدگویی
@@ -314,11 +315,22 @@
     function showSlides() { slides.forEach(slide => slide.classList.remove('active')); slideIndex++; if (slideIndex >= slides.length) { slideIndex = 0; } slides[slideIndex].classList.add('active'); setTimeout(showSlides, 3000); }
     setTimeout(showSlides, 3000);
 
-    // ساعت
+    // ساعت ۱۲ ساعته با فرمت فارسی
     function updateClock() {
         const now = new Date();
-        const options = { timeZone: 'Asia/Kabul', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-        document.getElementById('liveClock').innerText = '🕒 ساعت هرات: ' + now.toLocaleTimeString('fa-IR', options);
+        // تنظیم منطقه زمانی به کابل
+        const options = { 
+            timeZone: 'Asia/Kabul', 
+            hour: 'numeric', 
+            minute: '2-digit', 
+            second: '2-digit', 
+            hour12: true // فعال کردن حالت 12 ساعته
+        };
+        // گرفتن زمان و جایگزینی AM/PM با کلمات فارسی
+        let timeString = now.toLocaleTimeString('fa-IR', options);
+        timeString = timeString.replace('AM', 'ق.ظ').replace('PM', 'ب.ظ');
+        
+        document.getElementById('liveClock').innerText = '🕒 ساعت هرات: ' + timeString;
     }
     setInterval(updateClock, 1000);
     updateClock();
