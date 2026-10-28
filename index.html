@@ -15,25 +15,26 @@
                 radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.08), transparent 25%),
                 radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.05), transparent 25%);
             display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; color: white; overflow-x: hidden; padding-bottom: 80px;
-            position: relative;
+            min-height: 100vh; color: white; overflow-x: hidden; 
+            padding-bottom: 90px; position: relative;
         }
 
-        /* افکت نور متحرک در پس‌زمینه */
         body::before {
-            content: '';
-            position: fixed;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
+            content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 60%);
-            animation: moveLight 10s infinite linear;
-            z-index: -1;
-            pointer-events: none;
+            animation: moveLight 10s infinite linear; z-index: -1; pointer-events: none;
         }
         @keyframes moveLight {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(10%, 10%); }
-            100% { transform: translate(0, 0); }
+            0% { transform: translate(0, 0); } 50% { transform: translate(10%, 10%); } 100% { transform: translate(0, 0); }
+        }
+
+        /* انیمیشن ورود */
+        .fade-in-section {
+            opacity: 0; transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1; transform: translateY(0);
         }
 
         .container {
@@ -45,7 +46,6 @@
         }
         .container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
         
-        /* لوگوی اختصاصی SVG */
         .custom-logo { width: 100px; height: 100px; margin: 0 auto 15px auto; display: block; filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5)); }
 
         .brand-name { color: #d4af37; font-size: 28px; font-weight: 900; margin-bottom: 5px; text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
@@ -68,33 +68,57 @@
         @keyframes pulse-glow { 0% { box-shadow: 0 0 10px rgba(56, 239, 125, 0.2); } 100% { box-shadow: 0 0 25px rgba(56, 239, 125, 0.6); } }
 
         .whatsapp { background: linear-gradient(135deg, rgba(18, 140, 126, 0.8), rgba(37, 211, 102, 0.8)); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2); backdrop-filter: blur(10px); }
+        .whatsapp-voice { background: linear-gradient(135deg, rgba(30, 180, 80, 0.9), rgba(10, 120, 50, 0.9)); box-shadow: 0 8px 20px rgba(30, 180, 80, 0.3); border: 1px solid rgba(255,255,255,0.2); }
+        
+        .sell-car-btn { background: linear-gradient(135deg, #d4af37, #b8860b); color: #111; box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4); }
+        .sell-car-btn .icon { color: #111; }
+
         .telegram { background: linear-gradient(135deg, rgba(0, 136, 204, 0.8), rgba(0, 198, 255, 0.8)); box-shadow: 0 8px 20px rgba(0, 198, 255, 0.2); backdrop-filter: blur(10px); }
         .instagram { background: linear-gradient(45deg, rgba(240, 148, 51, 0.8) 0%, rgba(220, 39, 67, 0.8) 50%, rgba(188, 24, 136, 0.8) 100%); box-shadow: 0 8px 20px rgba(220, 39, 67, 0.2); backdrop-filter: blur(10px); }
         .facebook { background: linear-gradient(135deg, rgba(24, 119, 242, 0.9), rgba(66, 103, 178, 0.9)); box-shadow: 0 8px 20px rgba(24, 119, 242, 0.3); backdrop-filter: blur(10px); }
         
-        /* دکمه لوکیشن */
         .location-btn { background: linear-gradient(135deg, rgba(212, 175, 55, 0.9), rgba(180, 140, 40, 0.9)); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); backdrop-filter: blur(10px); color: #111; border: none; }
         .location-btn .icon { color: #111; }
 
-        /* گالری عکس ماشین‌ها */
-        .gallery-container { display: flex; overflow-x: auto; gap: 10px; margin-top: 30px; padding-bottom: 10px; scrollbar-width: none; }
-        .gallery-container::-webkit-scrollbar { display: none; }
-        .gallery-item { flex: 0 0 130px; height: 90px; border-radius: 10px; object-fit: cover; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
-        .gallery-item:active { transform: scale(1.05); }
+        /* کاتالوگ ماشین‌ها */
+        .catalog-container { display: flex; overflow-x: auto; gap: 15px; margin-top: 30px; padding-bottom: 15px; scrollbar-width: none; }
+        .catalog-container::-webkit-scrollbar { display: none; }
+        .catalog-item { flex: 0 0 160px; text-align: center; position: relative; }
+        .catalog-item img { width: 100%; height: 100px; border-radius: 10px; object-fit: cover; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom: 8px; }
+        .catalog-title { color: #eee; font-size: 13px; font-weight: 700; }
+        .catalog-price { color: #d4af37; font-size: 12px; margin-top: 3px; }
+        
+        /* لیبل ویژه */
+        .special-badge {
+            position: absolute; top: 5px; right: 5px;
+            background: linear-gradient(45deg, #d4af37, #fff);
+            color: #111; font-size: 10px; font-weight: 900;
+            padding: 3px 8px; border-radius: 5px;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+        }
 
         .address-box { margin-top: 20px; padding: 20px; background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 15px; font-size: 14px; color: #ccc; line-height: 1.8; }
         .address-box span { display: block; color: #d4af37; font-weight: 900; margin-bottom: 8px; font-size: 15px; }
         .working-hours { display: block; margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(212, 175, 55, 0.3); color: #bbb; font-size: 13px; }
         .working-hours b { color: #fff; }
 
-        /* بخش چرا ما */
         .why-us { margin-top: 25px; padding: 20px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 15px; text-align: right; }
         .why-us h3 { color: #d4af37; font-size: 16px; margin-bottom: 15px; text-align: center; }
         .why-us ul { list-style: none; }
         .why-us li { color: #ccc; font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; }
         .why-us li::before { content: '✅'; margin-left: 10px; font-size: 16px; }
 
-        /* سوالات متداول */
+        /* نظرات مشتریان */
+        .testimonials { margin-top: 25px; text-align: right; }
+        .testimonials h3 { color: #d4af37; font-size: 16px; margin-bottom: 15px; text-align: center; }
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px; padding: 15px; margin-bottom: 15px; position: relative;
+        }
+        .testimonial-card p { color: #ddd; font-size: 13px; font-style: italic; margin-bottom: 10px; line-height: 1.6; }
+        .testimonial-card .stars { color: #d4af37; font-size: 14px; text-align: left; }
+        .testimonial-card .name { color: #888; font-size: 12px; text-align: left; margin-top: 5px; }
+
         .faq-box { margin-top: 20px; text-align: right; }
         .faq-box h3 { color: #d4af37; font-size: 16px; margin-bottom: 15px; text-align: center; }
         .faq-item { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px; margin-bottom: 10px; padding: 12px; font-size: 13px; }
@@ -103,25 +127,37 @@
 
         .footer-text { margin-top: 25px; font-size: 13px; color: #888; line-height: 1.8; font-style: italic; }
 
-        /* دکمه شناور واتساپ با متن */
-        .floating-whatsapp {
-            position: fixed; bottom: 25px; left: 25px;
-            background: #25D366; height: 50px;
-            border-radius: 30px; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5); z-index: 1000;
-            transition: all 0.3s ease; text-decoration: none;
-            padding: 0 20px 0 15px;
+        .bottom-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex; justify-content: space-around; align-items: center;
+            padding: 10px 0; z-index: 1000;
         }
-        .floating-whatsapp:hover { transform: scale(1.05); background: #20b858; }
-        .floating-whatsapp svg { width: 25px; height: 25px; fill: white; margin-left: 10px; }
-        .floating-whatsapp span { color: white; font-weight: 700; font-size: 14px; font-family: 'Vazirmatn', Tahoma, sans-serif; }
+        .bottom-bar a { display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ccc; text-decoration: none; font-size: 11px; transition: all 0.3s ease; }
+        .bottom-bar a:hover { color: #d4af37; }
+        .bottom-bar .icon-box { font-size: 22px; margin-bottom: 3px; }
+
+        .welcome-popup {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px);
+            background: linear-gradient(135deg, #d4af37, #b8860b); color: #111;
+            padding: 12px 25px; border-radius: 30px; font-weight: 700; font-size: 14px;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); z-index: 2000;
+            opacity: 0; transition: all 0.5s ease; display: flex; align-items: center; gap: 10px;
+        }
+        .welcome-popup.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        .welcome-popup span { cursor: pointer; font-size: 18px; font-weight: 900; }
 
     </style>
 </head>
 <body>
 
+<div class="welcome-popup" id="welcomePopup">
+    به نمایشگاه تمیم صمیم خوش آمدید! 🚗✨
+    <span onclick="document.getElementById('welcomePopup').classList.remove('show')">✕</span>
+</div>
+
 <div class="container">
-    <!-- لوگوی اختصاصی (SVG) -->
     <svg class="custom-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <circle cx="50" cy="50" r="45" fill="#111" stroke="#d4af37" stroke-width="2"/>
         <path d="M30 35 L35 25 L42 32 L50 20 L58 32 L65 25 L70 35 Z" fill="#d4af37" stroke="#b8860b" stroke-width="1"/>
@@ -136,30 +172,52 @@
     <h2 class="brand-name-en">Tamim Samim Motors</h2>
     <p class="manager-name">مدیریت: فیروز احمد رنجبر</p>
     
+    <!-- دکمه‌ها با پیام آماده واتساپ -->
     <a href="tel:+93799000209" class="btn phone"><span class="icon">📞</span> تماس تلفنی</a>
-    <a href="https://wa.me/93799000209" class="btn whatsapp" target="_blank"><span class="icon">💬</span> واتساپ</a>
+    
+    <a href="https://wa.me/93799000209?text=سلام، از سایت تمیم صمیم مزاحم شدم. برای خرید ماشین مشاوره می‌خواستم." class="btn whatsapp" target="_blank"><span class="icon">💬</span> واتساپ (چت)</a>
+    
+    <a href="https://wa.me/93799000209" class="btn whatsapp-voice" target="_blank"><span class="icon">📞</span> تماس صوتی واتساپ</a>
+    
+    <a href="https://wa.me/93799000209?text=سلام، من می‌خواهم ماشین خود را از طریق نمایشگاه شما بفروشم. لطفا راهنمایی کنید." class="btn sell-car-btn fade-in-section" target="_blank">
+        <span class="icon">🚗</span> ماشین خود را بفروشید
+    </a>
+
     <a href="https://t.me/Moien000098" class="btn telegram" target="_blank"><span class="icon">✈️</span> تلگرام</a>
     <a href="https://instagram.com/tamim_samim_trauk_store" class="btn instagram" target="_blank"><span class="icon">📸</span> اینستاگرام</a>
     <a href="https://facebook.com/YOUR_PAGE_NAME" class="btn facebook" target="_blank"><span class="icon">📘</span> فیسبوک</a>
     
-    <a href="https://www.google.com/maps/search/Herat+Pul+Pushtu+car+dealership" class="btn location-btn" target="_blank">
+    <a href="https://www.google.com/maps/search/?api=1&query=34.3272,62.1898" class="btn location-btn" target="_blank">
         <span class="icon">📍</span> مسیریابی به نمایشگاه
     </a>
 
-    <!-- گالری عکس ماشین‌ها -->
-    <div class="gallery-container">
-        <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="gallery-item" alt="ماشین 1">
-        <img src="https://images.unsplash.com/photo-1503376712341-6d5a9c2b9d2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="gallery-item" alt="ماشین 2">
-        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="gallery-item" alt="ماشین 3">
+    <!-- کاتالوگ ماشین‌ها با لیبل ویژه -->
+    <div class="catalog-container fade-in-section">
+        <div class="catalog-item">
+            <span class="special-badge">ویژه</span>
+            <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="ماشین 1">
+            <div class="catalog-title">تویوتا لندکروزر</div>
+            <div class="catalog-price">قیمت: تماس بگیرید</div>
+        </div>
+        <div class="catalog-item">
+            <img src="https://images.unsplash.com/photo-1503376712341-6d5a9c2b9d2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="ماشین 2">
+            <div class="catalog-title">تویوتا کمری</div>
+            <div class="catalog-price">قیمت: تماس بگیرید</div>
+        </div>
+        <div class="catalog-item">
+            <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="ماشین 3">
+            <div class="catalog-title">لکسوس LX</div>
+            <div class="catalog-price">قیمت: تماس بگیرید</div>
+        </div>
     </div>
 
-    <div class="address-box">
+    <div class="address-box fade-in-section">
         <span>📍 آدرس نمایشگاه:</span>
         هرات، پل پشتو، جاده چهارم، بانگاه ۱۱۶
         <div class="working-hours">🕒 ساعت کاری: <b>شنبه تا پنجشنبه، ۸ صبح تا ۶ عصر</b></div>
     </div>
 
-    <div class="why-us">
+    <div class="why-us fade-in-section">
         <h3>چرا تمیم صمیم؟</h3>
         <ul>
             <li>تضمین اصالت و سلامت موتر</li>
@@ -168,8 +226,22 @@
         </ul>
     </div>
 
-    <!-- سوالات متداول -->
-    <div class="faq-box">
+    <!-- نظرات مشتریان -->
+    <div class="testimonials fade-in-section">
+        <h3>نظرات مشتریان</h3>
+        <div class="testimonial-card">
+            <p>"خیلی راضی بودم، ماشینی که خریدم دقیقاً همونی بود که توضیح دادند. برخوردشون عالی و حرفه‌ای بود."</p>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <div class="name">- احمد رضایی</div>
+        </div>
+        <div class="testimonial-card">
+            <p>"صداقت در معامله رو واقعاً حس کردم. برای معاوضه ماشین قبلیمم کمکم کردن. پیشنهاد می‌کنم."</p>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <div class="name">- محمد کریمی</div>
+        </div>
+    </div>
+
+    <div class="faq-box fade-in-section">
         <h3>سوالات متداول</h3>
         <div class="faq-item">
             <strong>آیا ماشین‌ها گارانتی دارند؟</strong>
@@ -187,11 +259,40 @@
     </p>
 </div>
 
-<!-- دکمه شناور واتساپ با متن -->
-<a href="https://wa.me/93799000209" class="floating-whatsapp" target="_blank">
-    <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.126-.074-.271-.085-1.616-.622-3.122-2.036-1.378-1.294-1.71-2.286-1.828-2.586-.12-.3-.022-.47.108-.6.118-.118.276-.3.414-.45.138-.15.184-.255.276-.427.092-.172.046-.322-.022-.45-.068-.128-.588-1.418-.806-1.94-.212-.51-.427-.44-.586-.448-.151-.007-.323-.008-.495-.008-.172 0-.451.064-.688.322-.237.258-.903.882-.903 2.15s.924 2.494 1.053 2.666c.129.172 1.82 2.78 4.408 3.9.616.266 1.097.425 1.472.544.618.196 1.18.168 1.625.102.502-.074 1.056-.432 1.205-.848.149-.416.149-.773.104-.848-.045-.075-.168-.12-.351-.21z"/></svg>
-    <span>سوالی دارید؟ پیام بدهید</span>
-</a>
+<div class="bottom-bar">
+    <a href="tel:+93799000209">
+        <span class="icon-box">📞</span> تماس
+    </a>
+    <a href="https://wa.me/93799000209?text=سلام، از سایت تمیم صمیم مزاحم شدم." target="_blank">
+        <span class="icon-box" style="color: #25D366;">💬</span> واتساپ
+    </a>
+    <a href="https://instagram.com/tamim_samim_trauk_store" target="_blank">
+        <span class="icon-box" style="color: #E1306C;">📸</span> اینستاگرام
+    </a>
+</div>
+
+<script>
+    // اسکریپت پاپ‌آپ خوش‌آمدگویی
+    setTimeout(function() {
+        document.getElementById('welcomePopup').classList.add('show');
+        setTimeout(function() {
+            document.getElementById('welcomePopup').classList.remove('show');
+        }, 5000);
+    }, 2000);
+
+    // اسکریپت انیمیشن ورود (Scroll Animation)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in-section').forEach((el) => {
+        observer.observe(el);
+    });
+</script>
 
 </body>
 </html>
