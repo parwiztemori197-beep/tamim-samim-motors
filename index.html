@@ -43,7 +43,8 @@
         .brand-name-en { color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; opacity: 0.7; }
         .manager-name { color: #aaa; font-size: 12px; margin-bottom: 15px; font-weight: 400; }
 
-        .slider-container { width: 100%; height: 160px; border-radius: 15px; overflow: hidden; position: relative; margin-bottom: 20px; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: inset 0 0 20px rgba(0,0,0,0.8); }
+        /* اسلایدر با ارتفاع مشخص و عکس‌های سبک */
+        .slider-container { width: 100%; height: 150px; border-radius: 15px; overflow: hidden; position: relative; margin-bottom: 20px; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: inset 0 0 20px rgba(0,0,0,0.8); background-color: #111; }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; }
         .slide.active { opacity: 1; }
         .slide img { width: 100%; height: 100%; object-fit: cover; }
@@ -107,7 +108,6 @@
         .bottom-bar a:hover { color: #d4af37; }
         .bottom-bar .icon-box { font-size: 20px; margin-bottom: 2px; }
 
-        /* پاپ‌آپ خوش‌آمدگویی با دکمه صدا */
         .welcome-popup { 
             position: fixed; top: 15px; left: 50%; transform: translateX(-50%) translateY(-100px); 
             background: linear-gradient(135deg, #d4af37, #b8860b); color: #111; 
@@ -140,7 +140,6 @@
         .chat-input-area { display: flex; padding: 8px; border-top: 1px solid #333; }
         .chat-input-area input { flex: 1; padding: 8px; border: none; border-radius: 15px; background: #2a2a2a; color: white; outline: none; font-family: 'Vazirmatn', Tahoma, sans-serif; font-size: 12px; }
         .chat-input-area button { background: #007bff; color: white; border: none; padding: 8px 12px; border-radius: 15px; margin-right: 8px; cursor: pointer; font-family: 'Vazirmatn', Tahoma, sans-serif; font-weight: 700; font-size: 12px; }
-
     </style>
 </head>
 <body>
@@ -169,18 +168,19 @@
     <h2 class="brand-name-en">Tamim Samim Motors</h2>
     <p class="manager-name">مدیریت: فیروز احمد رنجبر</p>
     
+    <!-- اسلایدر (عکس‌های سبک و سریع) -->
     <div class="slider-container fade-in-section">
         <div class="slide active">
-            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="لکسوس 570">
-            <div class="slide-text">لکسوس LX 570 - موجود در نمایشگاه</div>
+            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=500&q=80" alt="لکسوس">
+            <div class="slide-text">لکسوس - موجود در نمایشگاه</div>
         </div>
         <div class="slide">
-            <img src="https://images.unsplash.com/photo-1626660200311-3099176036f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="لکسوس 600">
-            <div class="slide-text">لکسوس LX 600 - موجود در نمایشگاه</div>
-        </div>
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="لندکروزر">
+            <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=500&q=80" alt="لندکروزر">
             <div class="slide-text">تویوتا لندکروزر - موجود در نمایشگاه</div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1503376712341-6d5a9c2b9d2a?auto=format&fit=crop&w=500&q=80" alt="کمری">
+            <div class="slide-text">تویوتا کمری - موجود در نمایشگاه</div>
         </div>
     </div>
     
@@ -196,19 +196,19 @@
     <div class="catalog-container fade-in-section">
         <div class="catalog-item">
             <span class="special-badge">ویژه</span>
-            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="لکسوس 570">
-            <div class="catalog-title">لکسوس LX 570</div>
-            <div class="catalog-price">قیمت: تماس بگیرید</div>
+            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=200&q=80" alt="لکسوس">
+            <div class="catalog-title">لکسوس</div>
+            <div class="catalog-price">تماس بگیرید</div>
         </div>
         <div class="catalog-item">
-            <img src="https://images.unsplash.com/photo-1503376712341-6d5a9c2b9d2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="تویوتا کمری">
+            <img src="https://images.unsplash.com/photo-1503376712341-6d5a9c2b9d2a?auto=format&fit=crop&w=200&q=80" alt="تویوتا کمری">
             <div class="catalog-title">تویوتا کمری</div>
-            <div class="catalog-price">قیمت: تماس بگیرید</div>
+            <div class="catalog-price">تماس بگیرید</div>
         </div>
         <div class="catalog-item">
-            <img src="https://images.unsplash.com/photo-1626660200311-3099176036f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="لکسوس 600">
-            <div class="catalog-title">لکسوس LX 600</div>
-            <div class="catalog-price">قیمت: تماس بگیرید</div>
+            <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=200&q=80" alt="لندکروزر">
+            <div class="catalog-title">تویوتا لندکروزر</div>
+            <div class="catalog-price">تماس بگیرید</div>
         </div>
     </div>
 
@@ -230,12 +230,12 @@
     <div class="testimonials fade-in-section">
         <h3>نظرات مشتریان</h3>
         <div class="testimonial-card">
-            <p>"خیلی راضی بودم، ماشینی که خریدم دقیقاً همونی بود که توضیح دادند. برخوردشون عالی و حرفه‌ای بود."</p>
+            <p>"خیلی راضی بودم، ماشینی که خریدم دقیقاً همونی بود که توضیح دادند."</p>
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <div class="name">- احمد رضایی</div>
         </div>
         <div class="testimonial-card">
-            <p>"صداقت در معامله رو واقعاً حس کردم. برای معاوضه ماشین قبلیمم کمکم کردن. پیشنهاد می‌کنم."</p>
+            <p>"صداقت در معامله رو واقعاً حس کردم. پیشنهاد می‌کنم."</p>
             <div class="stars">⭐⭐⭐⭐⭐</div>
             <div class="name">- محمد کریمی</div>
         </div>
@@ -249,7 +249,7 @@
         </div>
         <div class="faq-item">
             <strong>آیا امکان معاوضه (تبادله) وجود دارد؟</strong>
-            <p>بله، شما می‌توانید ماشین قبلی خود را با شرایط منصفانه با ماشین‌های ما معاوضه کنید.</p>
+            <p>بله، شما می‌توانید ماشین قبلی خود را با شرایط منصفانه معاوضه کنید.</p>
         </div>
     </div>
     
@@ -275,7 +275,7 @@
         <span onclick="toggleChat()">✕</span>
     </div>
     <div class="chat-body" id="chatBody">
-        <div class="message bot">سلام! چطور می‌تونم کمکتون کنم؟ (مثلاً بپرسید: ساعت کاری، آدرس، گارانتی)</div>
+        <div class="message bot">سلام! چطور می‌تونم کمکتون کنم؟</div>
     </div>
     <div class="chat-input-area">
         <input type="text" id="chatInput" placeholder="سوال خود را بنویسید..." onkeypress="handleKeyPress(event)">
@@ -286,19 +286,18 @@
 <script>
     // پخش صدای خوش‌آمدگویی
     function playWelcomeVoice() {
-        // استفاده از قابلیت Text-to-Speech مرورگر
         if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); 
             const utterance = new SpeechSynthesisUtterance('به نمایشگاه موتر فروشی تمیم صمیم خوش آمدید');
-            utterance.lang = 'fa-IR'; // تنظیم زبان فارسی/دری
-            utterance.rate = 0.9; // کمی آرام‌تر
-            utterance.pitch = 1; 
+            utterance.lang = 'fa-IR';
+            utterance.rate = 0.9;
             window.speechSynthesis.speak(utterance);
         } else {
             alert('مرورگر شما از پخش صدا پشتیبانی نمی‌کند.');
         }
     }
 
-    // پاپ‌آپ خوش‌آمدگویی
+    // پاپ‌آپ
     setTimeout(function() { 
         document.getElementById('welcomePopup').classList.add('show'); 
         setTimeout(function() { document.getElementById('welcomePopup').classList.remove('show'); }, 8000); 
@@ -333,4 +332,29 @@
         
         const userMsgDiv = document.createElement('div');
         userMsgDiv.className = 'message user';
-        user
+        userMsgDiv.innerText = message;
+        chatBody.appendChild(userMsgDiv);
+        input.value = '';
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        setTimeout(() => {
+            const botMsgDiv = document.createElement('div');
+            botMsgDiv.className = 'message bot';
+            let reply = "متاسفم، متوجه نشدم. لطفاً برای مشاوره دقیق‌تر با شماره 0799000209 تماس بگیرید یا در واتساپ پیام دهید.";
+            const msgLower = message.toLowerCase();
+            if (msgLower.includes('ساعت') || msgLower.includes('زمان') || msgLower.includes('باز')) { reply = "ما شنبه تا پنجشنبه از ساعت ۸ صبح تا ۶ عصر باز هستیم. جمعه‌ها تعطیل است."; } 
+            else if (msgLower.includes('ادرس') || msgLower.includes('آدرس') || msgLower.includes('کجا')) { reply = "آدرس ما: هرات، پل پشتو، جاده چهارم، بانگاه ۱۱۶. برای مسیریابی روی دکمه 'مسیریابی' در سایت بزنید."; } 
+            else if (msgLower.includes('گارانتی') || msgLower.includes('تضمین') || msgLower.includes('سالم')) { reply = "بله، تمامی ماشین‌های ما با تضمین کامل صحت بدنه و موتور به فروش می‌رسند."; } 
+            else if (msgLower.includes('لکسوس') || msgLower.includes('570') || msgLower.includes('600')) { reply = "بله، لکسوس LX 570 و LX 600 در نمایشگاه موجود می‌باشد. برای قیمت دقیق لطفاً تماس بگیرید."; } 
+            else if (msgLower.includes('قیمت') || msgLower.includes('چند')) { reply = "برای اعلام قیمت دقیق ماشین‌ها، لطفاً با شماره ما تماس بگیرید یا در واتساپ پیام دهید."; } 
+            else if (msgLower.includes('خرید') || msgLower.includes('فروش')) { reply = "برای خرید یا فروش ماشین، می‌توانید از دکمه‌های واتساپ در سایت استفاده کنید. همکاران ما راهنمایی‌تان می‌کنند."; }
+
+            botMsgDiv.innerText = reply;
+            chatBody.appendChild(botMsgDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
