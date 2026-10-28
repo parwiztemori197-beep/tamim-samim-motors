@@ -28,7 +28,6 @@
             0% { transform: translate(0, 0); } 50% { transform: translate(10%, 10%); } 100% { transform: translate(0, 0); }
         }
 
-        /* انیمیشن ورود */
         .fade-in-section {
             opacity: 0; transform: translateY(20px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -40,29 +39,48 @@
         .container {
             text-align: center; width: 92%; max-width: 420px;
             background: linear-gradient(145deg, rgba(25, 25, 25, 0.9), rgba(10, 10, 10, 0.95));
-            padding: 40px 25px; border-radius: 24px; border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 30px 25px; border-radius: 24px; border: 1px solid rgba(212, 175, 55, 0.3);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(212, 175, 55, 0.1);
             backdrop-filter: blur(20px); position: relative; overflow: hidden; margin: 20px 0;
         }
         .container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
         
-        .custom-logo { width: 100px; height: 100px; margin: 0 auto 15px auto; display: block; filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5)); }
+        .custom-logo { width: 80px; height: 80px; margin: 0 auto 10px auto; display: block; filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5)); }
 
-        .brand-name { color: #d4af37; font-size: 28px; font-weight: 900; margin-bottom: 5px; text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
-        .brand-name-en { color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; opacity: 0.7; }
-        .manager-name { color: #aaa; font-size: 14px; margin-bottom: 25px; font-weight: 400; }
+        .brand-name { color: #d4af37; font-size: 26px; font-weight: 900; margin-bottom: 5px; text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
+        .brand-name-en { color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; opacity: 0.7; }
+        .manager-name { color: #aaa; font-size: 13px; margin-bottom: 20px; font-weight: 400; }
+
+        /* اسلایدر عکس ماشین‌ها */
+        .slider-container {
+            width: 100%; height: 180px; border-radius: 15px; overflow: hidden;
+            position: relative; margin-bottom: 25px; border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+        }
+        .slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; transition: opacity 1s ease-in-out;
+        }
+        .slide.active { opacity: 1; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; }
+        .slide-text {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: #fff; padding: 20px 10px 10px; font-weight: 700; font-size: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8); text-align: center;
+        }
 
         .btn {
             display: flex; align-items: center; justify-content: center;
-            width: 100%; padding: 16px; margin: 12px 0;
-            border-radius: 14px; font-size: 16px; font-weight: 700;
+            width: 100%; padding: 15px; margin: 10px 0;
+            border-radius: 14px; font-size: 15px; font-weight: 700;
             color: white; text-decoration: none; transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1); position: relative; overflow: hidden;
         }
         .btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: all 0.5s ease; }
         .btn:hover::after { left: 100%; }
         .btn:active { transform: scale(0.96); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
-        .icon { margin-left: 10px; font-size: 20px; }
+        .icon { margin-left: 10px; font-size: 18px; }
 
         .phone { background: linear-gradient(135deg, rgba(17, 153, 142, 0.8), rgba(56, 239, 125, 0.8)); box-shadow: 0 8px 20px rgba(56, 239, 125, 0.2); backdrop-filter: blur(10px); animation: pulse-glow 2s infinite alternate; }
         @keyframes pulse-glow { 0% { box-shadow: 0 0 10px rgba(56, 239, 125, 0.2); } 100% { box-shadow: 0 0 25px rgba(56, 239, 125, 0.6); } }
@@ -80,15 +98,13 @@
         .location-btn { background: linear-gradient(135deg, rgba(212, 175, 55, 0.9), rgba(180, 140, 40, 0.9)); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3); backdrop-filter: blur(10px); color: #111; border: none; }
         .location-btn .icon { color: #111; }
 
-        /* کاتالوگ ماشین‌ها */
-        .catalog-container { display: flex; overflow-x: auto; gap: 15px; margin-top: 30px; padding-bottom: 15px; scrollbar-width: none; }
+        .catalog-container { display: flex; overflow-x: auto; gap: 15px; margin-top: 25px; padding-bottom: 15px; scrollbar-width: none; }
         .catalog-container::-webkit-scrollbar { display: none; }
-        .catalog-item { flex: 0 0 160px; text-align: center; position: relative; }
-        .catalog-item img { width: 100%; height: 100px; border-radius: 10px; object-fit: cover; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom: 8px; }
+        .catalog-item { flex: 0 0 150px; text-align: center; position: relative; }
+        .catalog-item img { width: 100%; height: 95px; border-radius: 10px; object-fit: cover; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom: 8px; }
         .catalog-title { color: #eee; font-size: 13px; font-weight: 700; }
         .catalog-price { color: #d4af37; font-size: 12px; margin-top: 3px; }
         
-        /* لیبل ویژه */
         .special-badge {
             position: absolute; top: 5px; right: 5px;
             background: linear-gradient(45deg, #d4af37, #fff);
@@ -102,19 +118,15 @@
         .working-hours { display: block; margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(212, 175, 55, 0.3); color: #bbb; font-size: 13px; }
         .working-hours b { color: #fff; }
 
-        .why-us { margin-top: 25px; padding: 20px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 15px; text-align: right; }
+        .why-us { margin-top: 20px; padding: 20px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 15px; text-align: right; }
         .why-us h3 { color: #d4af37; font-size: 16px; margin-bottom: 15px; text-align: center; }
         .why-us ul { list-style: none; }
         .why-us li { color: #ccc; font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; }
         .why-us li::before { content: '✅'; margin-left: 10px; font-size: 16px; }
 
-        /* نظرات مشتریان */
-        .testimonials { margin-top: 25px; text-align: right; }
+        .testimonials { margin-top: 20px; text-align: right; }
         .testimonials h3 { color: #d4af37; font-size: 16px; margin-bottom: 15px; text-align: center; }
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 12px; padding: 15px; margin-bottom: 15px; position: relative;
-        }
+        .testimonial-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 12px; padding: 15px; margin-bottom: 15px; position: relative; }
         .testimonial-card p { color: #ddd; font-size: 13px; font-style: italic; margin-bottom: 10px; line-height: 1.6; }
         .testimonial-card .stars { color: #d4af37; font-size: 14px; text-align: left; }
         .testimonial-card .name { color: #888; font-size: 12px; text-align: left; margin-top: 5px; }
@@ -172,7 +184,22 @@
     <h2 class="brand-name-en">Tamim Samim Motors</h2>
     <p class="manager-name">مدیریت: فیروز احمد رنجبر</p>
     
-    <!-- دکمه‌ها با پیام آماده واتساپ -->
+    <!-- اسلایدر خودکار عکس ماشین‌ها -->
+    <div class="slider-container fade-in-section">
+        <div class="slide active">
+            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="لکسوس 570">
+            <div class="slide-text">لکسوس LX 570 - موجود در نمایشگاه</div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1626660200311-3099176036f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="لکسوس 600">
+            <div class="slide-text">لکسوس LX 600 - موجود در نمایشگاه</div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="لندکروزر">
+            <div class="slide-text">تویوتا لندکروزر - موجود در نمایشگاه</div>
+        </div>
+    </div>
+    
     <a href="tel:+93799000209" class="btn phone"><span class="icon">📞</span> تماس تلفنی</a>
     
     <a href="https://wa.me/93799000209?text=سلام، از سایت تمیم صمیم مزاحم شدم. برای خرید ماشین مشاوره می‌خواستم." class="btn whatsapp" target="_blank"><span class="icon">💬</span> واتساپ (چت)</a>
@@ -191,22 +218,22 @@
         <span class="icon">📍</span> مسیریابی به نمایشگاه
     </a>
 
-    <!-- کاتالوگ ماشین‌ها با لیبل ویژه -->
+    <!-- کاتالوگ ماشین‌ها -->
     <div class="catalog-container fade-in-section">
         <div class="catalog-item">
             <span class="special-badge">ویژه</span>
-            <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="ماشین 1">
-            <div class="catalog-title">تویوتا لندکروزر</div>
+            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="لکسوس 570">
+            <div class="catalog-title">لکسوس LX 570</div>
             <div class="catalog-price">قیمت: تماس بگیرید</div>
         </div>
         <div class="catalog-item">
-            <img src="https://images.unsplash.com/photo-1503376712341-6d5a9c2b9d2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="ماشین 2">
+            <img src="https://images.unsplash.com/photo-1503376712341-6d5a9c2b9d2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="تویوتا کمری">
             <div class="catalog-title">تویوتا کمری</div>
             <div class="catalog-price">قیمت: تماس بگیرید</div>
         </div>
         <div class="catalog-item">
-            <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="ماشین 3">
-            <div class="catalog-title">لکسوس LX</div>
+            <img src="https://images.unsplash.com/photo-1626660200311-3099176036f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="لکسوس 600">
+            <div class="catalog-title">لکسوس LX 600</div>
             <div class="catalog-price">قیمت: تماس بگیرید</div>
         </div>
     </div>
@@ -226,7 +253,6 @@
         </ul>
     </div>
 
-    <!-- نظرات مشتریان -->
     <div class="testimonials fade-in-section">
         <h3>نظرات مشتریان</h3>
         <div class="testimonial-card">
@@ -292,6 +318,19 @@
     document.querySelectorAll('.fade-in-section').forEach((el) => {
         observer.observe(el);
     });
+
+    // اسکریپت اسلایدر خودکار
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    
+    function showSlides() {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slideIndex++;
+        if (slideIndex >= slides.length) { slideIndex = 0; }
+        slides[slideIndex].classList.add('active');
+        setTimeout(showSlides, 3000); // تغییر عکس هر 3 ثانیه
+    }
+    setTimeout(showSlides, 3000); // شروع بعد از 3 ثانیه
 </script>
 
 </body>
