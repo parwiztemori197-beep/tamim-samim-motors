@@ -16,7 +16,6 @@
         body {
             font-family: 'Vazirmatn', Tahoma, sans-serif;
             background-color: #030303;
-            /* پس‌زمینه خفن با نورهای محو */
             background-image: 
                 radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.08), transparent 25%),
                 radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.05), transparent 25%);
@@ -43,9 +42,9 @@
             backdrop-filter: blur(20px);
             position: relative;
             overflow: hidden;
+            margin: 20px 0;
         }
 
-        /* یک خط نئونی طلایی بالای کادر */
         .container::before {
             content: '';
             position: absolute;
@@ -56,7 +55,6 @@
             background: linear-gradient(90deg, transparent, #d4af37, transparent);
         }
 
-        /* جایگاه لوگو */
         .logo {
             width: 120px;
             height: 120px;
@@ -82,11 +80,18 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
             opacity: 0.7;
         }
 
-        /* دکمه‌های شیشه‌ای لاکچری */
+        /* استایل مدیریت */
+        .manager-name {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
         .btn {
             display: flex;
             align-items: center;
@@ -124,28 +129,14 @@
 
         .icon { margin-left: 10px; font-size: 20px; }
 
-        .phone { 
-            background: linear-gradient(135deg, rgba(17, 153, 142, 0.8), rgba(56, 239, 125, 0.8)); 
-            box-shadow: 0 8px 20px rgba(56, 239, 125, 0.2);
-            backdrop-filter: blur(10px);
-        }
-        .whatsapp { 
-            background: linear-gradient(135deg, rgba(18, 140, 126, 0.8), rgba(37, 211, 102, 0.8)); 
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
-            backdrop-filter: blur(10px);
-        }
-        .telegram { 
-            background: linear-gradient(135deg, rgba(0, 136, 204, 0.8), rgba(0, 198, 255, 0.8)); 
-            box-shadow: 0 8px 20px rgba(0, 198, 255, 0.2);
-            backdrop-filter: blur(10px);
-        }
-        .instagram { 
-            background: linear-gradient(45deg, rgba(240, 148, 51, 0.8) 0%, rgba(220, 39, 67, 0.8) 50%, rgba(188, 24, 136, 0.8) 100%); 
-            box-shadow: 0 8px 20px rgba(220, 39, 67, 0.2);
-            backdrop-filter: blur(10px);
-        }
+        .phone { background: linear-gradient(135deg, rgba(17, 153, 142, 0.8), rgba(56, 239, 125, 0.8)); box-shadow: 0 8px 20px rgba(56, 239, 125, 0.2); backdrop-filter: blur(10px); }
+        .whatsapp { background: linear-gradient(135deg, rgba(18, 140, 126, 0.8), rgba(37, 211, 102, 0.8)); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2); backdrop-filter: blur(10px); }
+        .telegram { background: linear-gradient(135deg, rgba(0, 136, 204, 0.8), rgba(0, 198, 255, 0.8)); box-shadow: 0 8px 20px rgba(0, 198, 255, 0.2); backdrop-filter: blur(10px); }
+        .instagram { background: linear-gradient(45deg, rgba(240, 148, 51, 0.8) 0%, rgba(220, 39, 67, 0.8) 50%, rgba(188, 24, 136, 0.8) 100%); box-shadow: 0 8px 20px rgba(220, 39, 67, 0.2); backdrop-filter: blur(10px); }
+        
+        /* دکمه فیسبوک */
+        .facebook { background: linear-gradient(135deg, rgba(24, 119, 242, 0.9), rgba(66, 103, 178, 0.9)); box-shadow: 0 8px 20px rgba(24, 119, 242, 0.3); backdrop-filter: blur(10px); }
 
-        /* کادر آدرس */
         .address-box {
             margin-top: 30px;
             padding: 20px;
@@ -163,16 +154,28 @@
             margin-bottom: 8px;
             font-size: 15px;
         }
+
+        /* متن تبلیغاتی پایانی */
+        .footer-text {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #888;
+            line-height: 1.8;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- محل قرارگیری لوگو (فعلا مخفی) -->
+    <!-- محل قرارگیری لوگو -->
     <img src="logo.png" alt="لوگو" class="logo">
     
     <h1 class="brand-name">موتر فروشی تمیم صمیم</h1>
     <h2 class="brand-name-en">Tamim Samim Motors</h2>
+    
+    <!-- مدیریت -->
+    <p class="manager-name">مدیریت: فیروز احمد رنجبر</p>
     
     <a href="tel:+93799000209" class="btn phone">
         <span class="icon">📞</span> تماس تلفنی
@@ -186,11 +189,22 @@
     <a href="https://instagram.com/tamim_samim_trauk_store" class="btn instagram" target="_blank">
         <span class="icon">📸</span> اینستاگرام
     </a>
+    
+    <!-- دکمه فیسبوک (آدرس پیج خود را جایگزین کنید) -->
+    <a href="https://facebook.com/YOUR_PAGE_NAME" class="btn facebook" target="_blank">
+        <span class="icon">📘</span> فیسبوک
+    </a>
 
     <div class="address-box">
         <span>📍 آدرس نمایشگاه:</span>
         هرات، پل پشتو، جاده چهارم، بانگاه ۱۱۶
     </div>
+    
+    <!-- متن تبلیغاتی -->
+    <p class="footer-text">
+        تجربه‌ای متفاوت از خرید و فروش موتر در هرات. <br>
+        تضمین کیفیت، صداقت در معامله و رضایت شما، افتخار ماست.
+    </p>
 </div>
 
 </body>
