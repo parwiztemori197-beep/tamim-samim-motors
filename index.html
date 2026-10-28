@@ -43,7 +43,6 @@
         .brand-name-en { color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; opacity: 0.7; }
         .manager-name { color: #aaa; font-size: 12px; margin-bottom: 15px; font-weight: 400; }
 
-        /* اسلایدر با ارتفاع مشخص و عکس‌های سبک */
         .slider-container { width: 100%; height: 150px; border-radius: 15px; overflow: hidden; position: relative; margin-bottom: 20px; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: inset 0 0 20px rgba(0,0,0,0.8); background-color: #111; }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; }
         .slide.active { opacity: 1; }
@@ -117,13 +116,6 @@
         }
         .welcome-popup.show { transform: translateX(-50%) translateY(0); opacity: 1; }
         .welcome-popup .close-btn { cursor: pointer; font-size: 16px; font-weight: 900; }
-        .voice-btn { 
-            background: #111; color: #d4af37; border: none; padding: 6px 10px; 
-            border-radius: 10px; font-size: 12px; cursor: pointer; 
-            display: flex; align-items: center; gap: 5px; font-weight: 700; 
-            transition: all 0.3s;
-        }
-        .voice-btn:hover { background: #222; }
 
         .chat-btn { position: fixed; bottom: 75px; right: 15px; background: #007bff; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5); z-index: 1000; cursor: pointer; transition: transform 0.3s; }
         .chat-btn:hover { transform: scale(1.1); }
@@ -144,10 +136,8 @@
 </head>
 <body>
 
-<!-- پاپ‌آپ خوش‌آمدگویی با دکمه پخش صدا -->
 <div class="welcome-popup" id="welcomePopup">
     <span>به نمایشگاه تمیم صمیم خوش آمدید! 🚗✨</span>
-    <button class="voice-btn" onclick="playWelcomeVoice()">🔊 پخش صدا</button>
     <span class="close-btn" onclick="document.getElementById('welcomePopup').classList.remove('show')">✕</span>
 </div>
 
@@ -168,7 +158,6 @@
     <h2 class="brand-name-en">Tamim Samim Motors</h2>
     <p class="manager-name">مدیریت: فیروز احمد رنجبر</p>
     
-    <!-- اسلایدر (عکس‌های سبک و سریع) -->
     <div class="slider-container fade-in-section">
         <div class="slide active">
             <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=500&q=80" alt="لکسوس">
@@ -284,20 +273,7 @@
 </div>
 
 <script>
-    // پخش صدای خوش‌آمدگویی
-    function playWelcomeVoice() {
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel(); 
-            const utterance = new SpeechSynthesisUtterance('به نمایشگاه موتر فروشی تمیم صمیم خوش آمدید');
-            utterance.lang = 'fa-IR';
-            utterance.rate = 0.9;
-            window.speechSynthesis.speak(utterance);
-        } else {
-            alert('مرورگر شما از پخش صدا پشتیبانی نمی‌کند.');
-        }
-    }
-
-    // پاپ‌آپ
+    // پاپ‌آپ خوش‌آمدگویی
     setTimeout(function() { 
         document.getElementById('welcomePopup').classList.add('show'); 
         setTimeout(function() { document.getElementById('welcomePopup').classList.remove('show'); }, 8000); 
