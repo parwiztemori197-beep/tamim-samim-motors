@@ -3,97 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موتر فروشی تمیم صمیم</title>
+    <title>موتر فروشی تمیم صمیم | Tamim Samim Motors</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: Tahoma, sans-serif;
-            background-color: #0d0d0d;
-            background-image: radial-gradient(circle at top, #1a1a1a 0%, #050505 100%);
+            font-family: 'Vazirmatn', Tahoma, sans-serif;
+            background-color: #030303;
+            /* پس‌زمینه خفن با نورهای محو */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.05), transparent 25%);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
             color: white;
+            overflow-x: hidden;
         }
+
         .container {
             text-align: center;
-            width: 90%;
-            max-width: 400px;
-            background: rgba(20, 20, 20, 0.8);
-            padding: 30px 20px;
-            border-radius: 20px;
-            border: 1px solid #d4af37;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-            backdrop-filter: blur(10px);
+            width: 92%;
+            max-width: 420px;
+            background: linear-gradient(145deg, rgba(25, 25, 25, 0.9), rgba(10, 10, 10, 0.95));
+            padding: 40px 25px;
+            border-radius: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 30px rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
         }
-        h1 {
+
+        /* یک خط نئونی طلایی بالای کادر */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        /* جایگاه لوگو */
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px auto;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            object-fit: cover;
+            display: none; /* فعلا مخفی است تا عکس آپلود شود */
+        }
+
+        .brand-name {
             color: #d4af37;
+            font-size: 28px;
+            font-weight: 900;
             margin-bottom: 5px;
-            font-size: 26px;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
         }
-        h2 {
-            color: #aaa;
-            margin-bottom: 25px;
+
+        .brand-name-en {
+            color: #fff;
             font-size: 14px;
-            font-weight: normal;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            opacity: 0.7;
         }
+
+        /* دکمه‌های شیشه‌ای لاکچری */
         .btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
             padding: 16px;
             margin: 12px 0;
-            border: none;
-            border-radius: 12px;
-            font-size: 17px;
-            font-weight: bold;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
             color: white;
             text-decoration: none;
-            box-sizing: border-box;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+
         .btn:active {
             transform: scale(0.96);
-            opacity: 0.8;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
         }
-        .phone { background: linear-gradient(135deg, #11998e, #38ef7d); box-shadow: 0 4px 15px rgba(56, 239, 125, 0.3); }
-        .whatsapp { background: linear-gradient(135deg, #128C7E, #25D366); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
-        .telegram { background: linear-gradient(135deg, #0088cc, #00c6ff); box-shadow: 0 4px 15px rgba(0, 198, 255, 0.3); }
-        .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3); }
-        
-        /* استایل کادر آدرس */
+
+        .icon { margin-left: 10px; font-size: 20px; }
+
+        .phone { 
+            background: linear-gradient(135deg, rgba(17, 153, 142, 0.8), rgba(56, 239, 125, 0.8)); 
+            box-shadow: 0 8px 20px rgba(56, 239, 125, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        .whatsapp { 
+            background: linear-gradient(135deg, rgba(18, 140, 126, 0.8), rgba(37, 211, 102, 0.8)); 
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        .telegram { 
+            background: linear-gradient(135deg, rgba(0, 136, 204, 0.8), rgba(0, 198, 255, 0.8)); 
+            box-shadow: 0 8px 20px rgba(0, 198, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        .instagram { 
+            background: linear-gradient(45deg, rgba(240, 148, 51, 0.8) 0%, rgba(220, 39, 67, 0.8) 50%, rgba(188, 24, 136, 0.8) 100%); 
+            box-shadow: 0 8px 20px rgba(220, 39, 67, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        /* کادر آدرس */
         .address-box {
-            margin-top: 25px;
-            padding: 15px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px dashed #d4af37;
-            border-radius: 10px;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
             font-size: 14px;
-            color: #eee;
-            line-height: 1.6;
+            color: #ccc;
+            line-height: 1.8;
         }
         .address-box span {
             display: block;
             color: #d4af37;
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 16px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            font-size: 15px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>موتر فروشی تمیم صمیم</h1>
-    <h2>اعتماد شما، افتخار ماست</h2>
+    <!-- محل قرارگیری لوگو (فعلا مخفی) -->
+    <img src="logo.png" alt="لوگو" class="logo">
     
-    <a href="tel:+937990000209" class="btn phone">📞 تماس تلفنی</a>
-    <a href="https://wa.me/937990000209" class="btn whatsapp" target="_blank">💬 واتساپ</a>
-    <a href="https://t.me/username_shoma" class="btn telegram" target="_blank">✈️ تلگرام</a>
-    <a href="https://instagram.com/tamim_samim_trauk_store" class="btn instagram" target="_blank">📸 اینستاگرام</a>
+    <h1 class="brand-name">موتر فروشی تمیم صمیم</h1>
+    <h2 class="brand-name-en">Tamim Samim Motors</h2>
+    
+    <a href="tel:+93799000209" class="btn phone">
+        <span class="icon">📞</span> تماس تلفنی
+    </a>
+    <a href="https://wa.me/93799000209" class="btn whatsapp" target="_blank">
+        <span class="icon">💬</span> واتساپ
+    </a>
+    <a href="https://t.me/Moien000098" class="btn telegram" target="_blank">
+        <span class="icon">✈️</span> تلگرام
+    </a>
+    <a href="https://instagram.com/tamim_samim_trauk_store" class="btn instagram" target="_blank">
+        <span class="icon">📸</span> اینستاگرام
+    </a>
 
-    <!-- کادر آدرس -->
     <div class="address-box">
         <span>📍 آدرس نمایشگاه:</span>
         هرات، پل پشتو، جاده چهارم، بانگاه ۱۱۶
