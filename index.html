@@ -30,12 +30,12 @@
         h1 {
             color: #d4af37;
             margin-bottom: 5px;
-            font-size: 28px;
+            font-size: 26px;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
         h2 {
             color: #aaa;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-size: 14px;
             font-weight: normal;
         }
@@ -43,7 +43,7 @@
             display: block;
             width: 100%;
             padding: 16px;
-            margin: 15px 0;
+            margin: 12px 0;
             border: none;
             border-radius: 12px;
             font-size: 17px;
@@ -61,6 +61,25 @@
         .whatsapp { background: linear-gradient(135deg, #128C7E, #25D366); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
         .telegram { background: linear-gradient(135deg, #0088cc, #00c6ff); box-shadow: 0 4px 15px rgba(0, 198, 255, 0.3); }
         .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3); }
+        
+        /* استایل کادر آدرس */
+        .address-box {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px dashed #d4af37;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #eee;
+            line-height: 1.6;
+        }
+        .address-box span {
+            display: block;
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -72,9 +91,13 @@
     <a href="tel:+937990000209" class="btn phone">📞 تماس تلفنی</a>
     <a href="https://wa.me/937990000209" class="btn whatsapp" target="_blank">💬 واتساپ</a>
     <a href="https://t.me/username_shoma" class="btn telegram" target="_blank">✈️ تلگرام</a>
-    
-    <!-- لینک اینستاگرام شما اینجا قرار گرفت -->
     <a href="https://instagram.com/tamim_samim_trauk_store" class="btn instagram" target="_blank">📸 اینستاگرام</a>
+
+    <!-- کادر آدرس -->
+    <div class="address-box">
+        <span>📍 آدرس نمایشگاه:</span>
+        هرات، پل پشتو، جاده چهارم، بانگاه ۱۱۶
+    </div>
 </div>
 
 </body>
